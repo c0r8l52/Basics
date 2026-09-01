@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Draft Advisor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>Fantasy Draft Advisor</h1>
+    <div class="header-actions">
+      <span id="status" class="status">loading...</span>
+      <button id="refreshBtn">Refresh from ESPN</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="teamPanel">
+      <h2>My Team</h2>
+      <div id="rosterNeeds"></div>
+      <ul id="rosterList" class="roster-list"></ul>
+    </section>
+
+    <section class="panel" id="recommendPanel">
+      <h2>Get My Pick</h2>
+      <div class="recommend-controls">
+        <label for="positionFilter">Position</label>
+        <select id="positionFilter">
+          <option value="">Best available (any)</option>
+          <option value="QB">QB</option>
+          <option value="RB">RB</option>
+          <option value="WR">WR</option>
+          <option value="TE">TE</option>
+          <option value="D/ST">D/ST</option>
+          <option value="K">K</option>
+        </select>
+        <button id="recommendBtn" class="primary">Ask the GM</button>
+      </div>
+      <div id="recommendOutput"></div>
+    </section>
+
+    <section class="panel" id="playersPanel">
+      <h2>Available Players</h2>
+      <div class="players-controls">
+        <input id="searchBox" type="text" placeholder="Search player..." />
+        <select id="tablePositionFilter">
+          <option value="">All positions</option>
+          <option value="QB">QB</option>
+          <option value="RB">RB</option>
+          <option value="WR">WR</option>
+          <option value="TE">TE</option>
+          <option value="D/ST">D/ST</option>
+          <option value="K">K</option>
+        </select>
+      </div>
+      <table id="playersTable">
+        <thead>
+          <tr>
+            <th>Player</th><th>Pos</th><th>Team</th><th>Injury</th>
+            <th>ESPN Proj</th><th>ESPN Own%</th><th>FP Rank</th><th>FP Tier</th><th>FP ADP</th>
+          </tr>
+        </thead>
+        <tbody id="playersBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
